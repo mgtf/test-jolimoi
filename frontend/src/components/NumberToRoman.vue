@@ -21,10 +21,18 @@
 import {Component, Vue} from 'vue-property-decorator'
 import axios from "axios";
 
+// Note : This is a solution with server side input validation only
 @Component
 export default class NumberToRoman extends Vue {
   roman: string = ''
   number: string = ''
+
+  mounted() {
+    const eventSource = new EventSource('/converters/numberToRoman/sub');
+    eventSource.onmessage = ({ data }) => {
+      this.roman = data
+    }
+  }
 
   async convert(): Promise<void> {
     if(! this.number.length) {
@@ -32,8 +40,7 @@ export default class NumberToRoman extends Vue {
       return
     }
     try {
-      const { data } = await axios.post('http://localhost:3000/converters/numberToRoman', { number: +this.number });
-      this.roman = data;
+      await axios.post('/converters/numberToRoman', { number: +this.number });
     } catch(e) {
       this.roman = 'Invalid input value (integer 0 - 100)'
     }
