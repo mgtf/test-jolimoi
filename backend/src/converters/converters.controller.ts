@@ -6,16 +6,10 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ConvertersService } from './converters.service';
 import { Query } from './converters.types';
-import { interval, map, Observable } from 'rxjs';
-
-export interface MessageEvent {
-  data: string | object;
-  id?: string;
-  type?: string;
-  retry?: number;
-}
+import { Observable } from 'rxjs';
 
 @Controller('converters')
 export class ConvertersController {

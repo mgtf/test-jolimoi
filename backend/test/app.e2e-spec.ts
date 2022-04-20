@@ -29,6 +29,6 @@ describe('AppController (e2e)', () => {
         number: 42,
       })
       .expect(201)
-      .expect('XLII');
+      .expect('');
   });
 });
