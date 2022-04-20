@@ -21,4 +21,14 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('API waiting for request');
   });
+
+  it('/converters/numberToRoman (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/converters/numberToRoman')
+      .send({
+        number: 42,
+      })
+      .expect(201)
+      .expect('XLII');
+  });
 });
