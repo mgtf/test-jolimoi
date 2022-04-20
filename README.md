@@ -10,13 +10,13 @@ $ npm i -g @nestjs/cli
 $ cd backend
 # Install deps
 $ npm install
-# Run tests suite
+# (optional) Run tests suite
 $ npm run test
-# Run e2e tests
+# (optional) Run e2e tests
 $ npm run test:e2e
 # Launch dev server 
 $ npm run start:dev
-# Optionnaly open localhost:3000 to check API status
+# (optional) open localhost:3000 to check API status
 ```
 ### 3. Frontend
 ```bash
