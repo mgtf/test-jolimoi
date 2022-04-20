@@ -23,5 +23,5 @@ $ npm run start:dev
 $ cd frontend
 $ npm install
 $ npm run serve
-# Open http://localhost:8080/
+# Open http://localhost:3001/
 ```

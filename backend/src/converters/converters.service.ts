@@ -1,8 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class ConvertersService {
-  numberToRoman(n: number): string {
+  private events = new Subject();
+
+  addEvent(event) {
+    this.events.next(event);
+  }
+
+  sendEvents() {
+    return this.events.asObservable();
+  }
+
+  numberToRoman(n: number): void {
+    const roman = this.convertNumberToRoman(n);
+    this.addEvent({ data: roman });
+  }
+
+  convertNumberToRoman(n: number): string {
     if (n % 1 !== 0) {
       // TODO : i18n
       throw new Error('Input must be integer');

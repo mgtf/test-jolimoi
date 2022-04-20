@@ -17,25 +17,25 @@ describe('ConvertersService', () => {
   });
 
   it('should convert correctly', () => {
-    expect(service.numberToRoman(9)).toBe('IX');
-    expect(service.numberToRoman(51)).toBe('LI');
-    expect(service.numberToRoman(100)).toBe('C');
+    expect(service.convertNumberToRoman(9)).toBe('IX');
+    expect(service.convertNumberToRoman(51)).toBe('LI');
+    expect(service.convertNumberToRoman(100)).toBe('C');
   });
 
   // TODO : i18n
   it('should accept only integer', () => {
     expect(() => {
-      service.numberToRoman(1.1);
+      service.convertNumberToRoman(1.1);
     }).toThrowError('Input must be integer');
   });
 
   // TODO : i18n
   it('should throw error for invalid value', () => {
     expect(() => {
-      service.numberToRoman(101);
+      service.convertNumberToRoman(101);
     }).toThrowError('Input integer limited to 0 through 100');
     expect(() => {
-      service.numberToRoman(-1);
+      service.convertNumberToRoman(-1);
     }).toThrowError('Input integer limited to 0 through 100');
   });
 });
