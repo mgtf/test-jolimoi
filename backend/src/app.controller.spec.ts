@@ -4,18 +4,23 @@ import { AppService } from './app.service';
 
 describe('AppController', () => {
   let app: TestingModule;
+  let appController: AppController;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
       providers: [AppService],
     }).compile();
+    appController = app.get<AppController>(AppController);
   });
 
-  describe('getHello', () => {
-    it('should return "Hello World!"', () => {
-      const appController = app.get<AppController>(AppController);
-      expect(appController.getHello()).toBe('Hello World!');
+  it('should be defined"', () => {
+    expect(appController).toBeDefined();
+  });
+
+  describe('getStatut', () => {
+    it('should return "API waiting for request"', () => {
+      expect(appController.getStatus()).toBe('API waiting for request');
     });
   });
 });
